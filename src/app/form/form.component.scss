@@ -1,0 +1,24 @@
+.layoutInput{
+    background-color: #390C14;
+    border-color: darken($color: #ffffff, $amount: 20) ;
+    border-width: 3px;
+}
+
+.layoutlabel {
+    color: darken($color: #ffffff, $amount: 20);
+}
+
+.layoutButton {
+    background-color: #A94B81;
+    border-color: darken($color: #ffffff, $amount: 20) ;
+    border-width: 3px;
+}
+
+.layoutButton:hover{
+    background-color: black;  
+}
+
+.layoutContainer {
+    background-color: black;
+    border-radius: 20%;
+}

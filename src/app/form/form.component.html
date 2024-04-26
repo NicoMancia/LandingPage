@@ -1,0 +1,48 @@
+ 
+ <div>
+  <label style="width: 300px" class="text-center">
+    <p class="fw-bold">Lascia i tuoi dati e ti ricontatteremo con le migliori offerte più vicine a te!!</p>
+  </label>
+</div>
+ <div class="container layoutContainer h-100 d-flex align-items-center justify-content-center">
+ <form [formGroup]="checkoutForm" class="">
+    
+    @for (item of items; track $index) {
+      <div class="form-floating mb-2">
+        <input style="width: 300px" [type]="item.type" class="layoutInput layoutBorderInput form-control" id="floatingInput" [placeholder]="item.placeholder" [formControlName]="item.name">
+        <label class="layoutlabel" for="floatingInput">{{item.label}}</label>
+      </div>
+    }    
+    <button style="width: 300px" class="layoutButton btn btn-primary" (click)="sendForm()">INVIA</button>
+
+</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="floatingInput" placeholder="Full name" formControlName="nome">
+      <label for="floatingInput">Full name</label>
+    </div>
+    <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="floatingInput" placeholder="Email address" formControlName="email">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating mb-2">
+      <input type="email" class="form-control" id="floatingInput" placeholder="Phone number" formControlName="phone">
+      <label for="floatingInput">Phone number</label>
+    </div> -->
