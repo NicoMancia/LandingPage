@@ -1,21 +1,29 @@
-.layoutInput{
-    background-color: #390C14;
-    border-color: darken($color: #ffffff, $amount: 20) ;
-    border-width: 3px;
-}
+// .layoutInput{
+//     background-color: #390C14;
+//     border-color: darken($color: #ffffff, $amount: 20);
+//     border-width: 3px;
+//     color: darken($color: #ffffff, $amount: 20);
+// }
 
-.layoutlabel {
-    color: darken($color: #ffffff, $amount: 20);
-}
+// .layoutlabel {
+//     color: darken($color: #ffffff, $amount: 20);
+// }
 
 .layoutButton {
-    background-color: #A94B81;
-    border-color: darken($color: #ffffff, $amount: 20) ;
+    background-color: transparent;
+    border-color: darken($color: #ffffff, $amount: 20);
+    color: darken($color: #ffffff, $amount: 20);
     border-width: 3px;
+    font-weight: bold;
 }
 
 .layoutButton:hover{
-    background-color: white;  
+    background-color: #390C14;  
+}
+
+.layoutButton:active{
+    border-color: #A94B81;
+    color: #A94B81;
 }
 
 .layoutContainer {

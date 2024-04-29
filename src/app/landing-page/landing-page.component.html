@@ -1,5 +1,5 @@
-<div class="container-fluid BackGround">
-  <div class="row h-100">
+<div class="container-fluid">
+  <div class="row altezzaPagina">
     <div class="row h-25">
       <div class="col-sm-2 pt-3 ps-4 ">
         <img src="/assets/images/logo-transparent-png.png" class="WidthLogo" />
@@ -10,10 +10,11 @@
     <div class="row h-50">
       <div class="col-4">
          </div>
-         <div class="col-5">
+         <div class="col-4 center">
+          <app-form [figlio]="figlio" (eventOutput)="risposta()"></app-form>
         </div>
-      <div class="col-3 "> 
-        <app-form [figlio]="figlio" (eventOutput)="risposta()"></app-form>
+      <div class="col-4 "> 
+        
       </div>
     </div>
     <div class="row h-25">
@@ -21,7 +22,10 @@
     </div>
 
   </div>
+  <div class="back-video">
+  <video autoplay muted loop class="w-100">
+    <source src="/assets/images/videoBack.mp4" type="video/mp4">
+  </video>
 </div>
-<div>
-    
 </div>
+
