@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FormServiceService } from '../form-service.service';
 import { FloatLabelModule } from 'primeng/floatlabel';
@@ -21,23 +21,23 @@ export class FormComponent implements OnInit{
   eventOutput: EventEmitter<any> = new EventEmitter<any>(); //creo un nuovo evento di tipo EventEmitter
 
   items: InterfaceItemForm[] = [{
-    placeholder: 'Full name',
+    placeholder: 'Name',
     name: 'nome',
-    label: 'Full name'
-  }, {
+    label: 'Name'
+  },{
+    placeholder: 'Surname',
+    name: 'cognome',
+    label: 'Surname'
+  } ,{
     placeholder: 'Email address',
     name: 'email',
     label: 'Email address'
-  },{
-    placeholder: 'Phone number',
-    name: 'phone',
-    label: 'Phone number'
   }];
 
   checkoutForm: FormGroup = this.formBuilder.group({
     nome: '',
-    email: '',
-    phone: ''
+    cognome: '',
+    email: ''
   }); 
 
   constructor(
@@ -49,7 +49,7 @@ export class FormComponent implements OnInit{
   
   sendForm(): void{
     console.log(this.checkoutForm.value);
-    //this.formService.sendForm(this.checkoutForm.value).subscribe();
+    this.formService.sendForm(this.checkoutForm.value).subscribe();
   }
 
   ngOnInit(): void {

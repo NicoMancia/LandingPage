@@ -1,5 +1,5 @@
-<div class="container-fluid">
-  <div class="row altezzaPagina">
+<div class="container-fluid background">
+  <div class="row altezza-pagina">
     <div class="row h-25">
       <div class="col-sm-2 pt-3 ps-4 ">
         <img src="/assets/images/logo-transparent-png.png" class="WidthLogo" />
@@ -8,24 +8,34 @@
     </div>
 
     <div class="row h-50">
-      <div class="col-4">
-         </div>
-         <div class="col-4 center">
-          <app-form [figlio]="figlio" (eventOutput)="risposta()"></app-form>
-        </div>
-      <div class="col-4 "> 
-        
+      <div class="col-7">
+        <app-call-to-action></app-call-to-action>
+      </div>
+      <div class="col-5 center"> 
+        <app-form [figlio]="figlio" (eventOutput)="risposta()"></app-form>
       </div>
     </div>
     <div class="row h-25">
       <div class="col"></div>
     </div>
+    
+   <div class="back-video">
 
+    <video autoplay muted loop class="w-100">
+      <source src="/assets/images/videoBack.mp4" type="video/mp4">
+    </video>
   </div>
-  <div class="back-video">
+</div>
+  
+  <!-- <iframe class="video-youtube" src="https://www.youtube.com/embed/Wyzg1fko8FA?si=YweLGkPpAn_Y5IZ0?autoplay=1&mute=1" 
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+   <div class="back-video">
+
   <video autoplay muted loop class="w-100">
     <source src="/assets/images/videoBack.mp4" type="video/mp4">
   </video>
-</div>
-</div>
+</div> -->
+
 

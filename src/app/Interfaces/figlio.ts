@@ -7,7 +7,6 @@ export interface InterfaceFiglio {
 }
 
 export interface InterfaceItemForm{
-    type?: string,
     placeholder: string,
     name: string,
     label: string

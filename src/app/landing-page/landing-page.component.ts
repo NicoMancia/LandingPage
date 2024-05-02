@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormComponent } from "../form/form.component";
 import { InterfaceFiglio } from '../Interfaces/figlio';
+import { CallToActionComponent } from '../call-to-action/call-to-action.component';
 
 
 
@@ -9,7 +10,7 @@ import { InterfaceFiglio } from '../Interfaces/figlio';
     standalone: true,
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
-    imports: [FormComponent]
+    imports: [FormComponent, CallToActionComponent]
 })
 export class LandingPageComponent {
     figlio: InterfaceFiglio = {
