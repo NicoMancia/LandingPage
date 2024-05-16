@@ -1,34 +1,69 @@
-.layoutButton {
-    background-color: transparent;
-    border-color: darken($color: #ffffff, $amount: 20);
-    color: darken($color: #ffffff, $amount: 20);
-    border-width: 3px;
-    font-weight: bold;
-}
-
 .layout-label {
-    color: darken($color: #ffffff, $amount: 20);
+  color: #16160a;
+  background-color: transparent;
+}
+.max-width {
+  max-width: 60%;
 }
 
-.layoutButton:hover{
-    background-color: darken($color: #ffffff, $amount: 20);
-    color: #390C14;
-    border-color: #390C14; 
+input {
+  border: #16160a solid;
+  background-color: white;
 }
-
-.layoutButton:active{
-    background-color: #A94B81;
+select {
+  border: #16160a solid;
 }
-
 .layoutContainer {
-    background-color: #390C14;
-    border-radius: 20%;
-    align-items: center;
-    justify-content: center;
+  background-color: transparent;
+  border-radius: 20%;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
 }
 
 .center {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layoutButton {
+  width: 100%;
+  background-color: transparent;
+  border-color: #16160a;
+  color: #16160a;
+  border-width: 3px;
+  font-weight: bold;
+}
+
+.layoutButton:hover {
+  background-color: #16160a;
+  color: white;
+  border-color: white;
+}
+
+.layoutButton:active {
+  background-color: #515122;
+}
+
+@media (max-width: 1347px) {
+  .max-width{
+    max-width: 80%;
+  }
+}
+@media (max-width: 905px) {
+  .max-width{
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .max-width{
+    max-width: 80%;
+  }
+}
+@media (max-width: 767px) {
+  .max-width{
+    max-width: 100%;
+  }
 }
