@@ -8,7 +8,7 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import {
   InterfaceLead,
@@ -17,11 +17,12 @@ import {
 } from '../Interfaces/figlio';
 import { LeadService } from '../Services/lead.service';
 import { ToastComponent } from '../toast/toast.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, FloatLabelModule, ToastComponent],
+  imports: [ReactiveFormsModule, FloatLabelModule, ToastComponent, ModalComponent],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
   providers: [LeadService],
@@ -34,6 +35,16 @@ export class FormComponent implements OnInit {
   eventOutput: EventEmitter<any> = new EventEmitter<any>(); //creo un nuovo evento di tipo EventEmitter
 
   idInputToast: string = '';
+
+  idModal: string = '';
+  
+  @ViewChild('selectRegione') mySelectRegion!: ElementRef; //creo un elemento "mySelect" che corrisponde all'elemento nel documento HTML con l'ID "selectRegione"
+
+  @ViewChild('labelRegione') myLabelRegion!: ElementRef;
+
+  @ViewChild('checkTerms') mySelectTerms!: ElementRef;
+
+  @ViewChild('labelCampoObb') myLabelObb!: ElementRef;
 
   options: InterfaceSelect[] = [
     {
@@ -117,26 +128,17 @@ export class FormComponent implements OnInit {
   ];
 
   checkoutForm: FormGroup = this.formBuilder.group({
-    nome: '',
-    cognome: '',
-    email: '',
+    nome: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    cognome: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    email:new FormControl(null, [Validators.required, Validators.email]),
     regione: '',
   });
 
   constructor(
     private formBuilder: FormBuilder,
     private leadService: LeadService,
-    private renderer: Renderer2,
-    private elementRef: ElementRef
+    private renderer: Renderer2
   ) {}
-
-  @ViewChild('selectRegione') mySelectRegion!: ElementRef; //creo un elemento "mySelect" che corrisponde all'elemento nel documento HTML con l'ID "selectRegione"
-
-  @ViewChild('labelRegione') myLabelRegion!: ElementRef;
-
-  @ViewChild('checkTerms') mySelectTerms!: ElementRef;
-
-  @ViewChild('labelCampoObb') myLabelObb!: ElementRef;
 
   onCheckboxChangeRegion(event: Event) {
     const checkbox = event.target as HTMLInputElement;
@@ -154,10 +156,8 @@ export class FormComponent implements OnInit {
   }
 
   onCheckboxChangeTerms(event: Event) {
-    const checkbox = event.target as HTMLInputElement;
-    const isChecked = checkbox.checked; //creo una variabile e gli asegno true se è selezionata o false se non è selezionata
-
-    if (isChecked) {
+    
+    if (this.mySelectTerms.nativeElement.checked) {
       this.renderer.removeClass(this.mySelectTerms.nativeElement, 'red-border');
       this.myLabelObb.nativeElement.style.display = 'none';
     }
@@ -167,15 +167,13 @@ export class FormComponent implements OnInit {
     if (this.mySelectTerms.nativeElement.checked) {
       this.leadService.create(this.checkoutForm.value).subscribe({
         next: () => {
-          this.idInputToast = 'liveToastSuccess';
-          this.resetToast();
+          this.idModal = 'exampleModal';
+          this.resetModal();
           this.checkoutForm.reset();
-          this.mySelectRegion.nativeElement.checked = false;
+          this.mySelectTerms.nativeElement.checked = false;
         },
         error: () => {
-          console.log(this.mySelectTerms.nativeElement.checked);
           this.mySelectTerms.nativeElement.checked = false;
-          console.log(this.mySelectTerms.nativeElement.checked);
           this.idInputToast = 'liveToastDanger';
           this.resetToast();
           this.checkoutForm.reset();
@@ -191,6 +189,14 @@ export class FormComponent implements OnInit {
     if (this.idInputToast != '') {
       setTimeout(() => {
         this.idInputToast = '';
+      }, 0);
+    }
+  }
+
+  resetModal() {
+    if (this.idModal != '') {
+      setTimeout(() => {
+        this.idModal = '';
       }, 0);
     }
   }

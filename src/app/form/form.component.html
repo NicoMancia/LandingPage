@@ -4,6 +4,7 @@
       @for (item of items; track $index) {
       <div class="form-floating mb-2">
         <input
+          type="text"
           class="form-control"
           [placeholder]="item.placeholder"
           [formControlName]="item.name"
@@ -47,35 +48,37 @@
       <div class="form-check">
         <input
           #checkTerms
-          class="form-check-input "
+          class="form-check-input"
           type="checkbox"
           id="flexCheckIndeterminate"
-          (change)="onCheckboxChangeTerms($event)"          
+          (change)="onCheckboxChangeTerms($event)"
         />
         <label
-          class="form-check-label mb-2"
+          class="form-check-label"
           for="flexCheckIndeterminate"
-          style="color: white;"
+          style="color: white"
         >
           Accetto i <u>Termini di servizio</u>, le <u>Condizioni generali</u> e
           <u>Condizioni</u> e <u>Informativa sulla privacy</u>.
         </label>
         <label
-        #labelCampoObb
+          #labelCampoObb
           for="flexCheckIndeterminate"
-          style="color: red; display: none;"
-          class="mb-2"
+          class="layout-label-obb"
         >
-         <strong>Campo obbligatorio</strong>
+          <strong>Campo obbligatorio</strong>
         </label>
       </div>
       <button
-        class="layoutButton btn btn-primary"
+        class="layoutButton btn btn-primary mt-2"
         (click)="create()"
+        type="button"
         #liveToastBtn
+        [disabled]="!checkoutForm.valid"
       >
         ISCRIVIMI!
       </button>
+      <app-modal [idModal]="idModal"></app-modal>
       <app-toast [idToast]="idInputToast"></app-toast>
     </form>
   </div>

@@ -26,7 +26,7 @@ u {
   color: #515122;
 }
 
-u:hover{
+u:hover {
   color: #fcd656;
   cursor: pointer;
 }
@@ -41,6 +41,12 @@ u:hover{
   font-weight: bold;
 }
 
+.layout-label-obb {
+  color: red;
+  display: none;
+  font-size: 0.9em;
+}
+
 .layoutButton:hover {
   background-color: #fcd656;
   color: #16160a;
@@ -51,8 +57,6 @@ u:hover{
   background-color: #dcdbde;
 }
 
-
-.red-border{
+.red-border {
   border-color: red;
 }
-

@@ -32,7 +32,7 @@ tbody tr td input {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
   text-align: left;
   color: black;
-  background-color: transparent;
+
 }
 
 .altezza-pagina {
@@ -79,7 +79,7 @@ td {
 
 .section {
   border-radius: 30px;
-  background-color: grey;
+  background-color: rgb(81, 81, 34, 0.8);
   margin: 40px;
   padding: 5px;
   position: relative; //Per consentire il posizionamento dell'alone
@@ -148,4 +148,15 @@ td {
 .button-search-reset:active {
   background-color: #a94b81;
   color: #f8f9fa;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  min-height: 100vh;
 }
