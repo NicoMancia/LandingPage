@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormComponent } from "../form/form.component";
-import { InterfaceFiglio } from '../Interfaces/figlio';
+import { InterfaceLead } from '../Interfaces/figlio';
 import { CallToActionComponent } from '../call-to-action/call-to-action.component';
+import { LogoComponent } from '../logo/logo.component';
 
 
 
@@ -10,10 +11,11 @@ import { CallToActionComponent } from '../call-to-action/call-to-action.componen
     standalone: true,
     templateUrl: './landing-page.component.html',
     styleUrl: './landing-page.component.scss',
-    imports: [FormComponent, CallToActionComponent]
+    imports: [FormComponent, CallToActionComponent,LogoComponent]
 })
 export class LandingPageComponent {
-    figlio: InterfaceFiglio = {
+    pippo: InterfaceLead = {
+        id: 2,
         nome: 'Mario',
         cognome: 'Rossi',
         email: 'mariorossi@gmail.com'
@@ -21,6 +23,5 @@ export class LandingPageComponent {
 
     risposta()
     {
-        console.log('ciao figlio');
     }
 }

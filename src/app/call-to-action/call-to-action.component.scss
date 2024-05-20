@@ -1,14 +1,156 @@
-.layout-text {
-    font-size: 5em;
-    font-family: normal;
-    color: #390C14;
-    -webkit-text-stroke: 0.5px darken($color: #ffffff, $amount: 0);
-    margin-left: 1cm;
+.layout-paragraph-text {
+  color: darken($color: #ffffff, $amount: 0);
 }
 
-.racing-sans-one-regular {
-    font-family: "Racing Sans One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+u {
+  color: #16160a;
+  
+}
+
+img {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+u:hover {
+  color: #fcd656;
+}div {
+  text-align: center;
+}
+h1 {
+  line-height: calc(1em + 8px);
+  text-align: center;
+  color: #515122;
+  margin-bottom: 0.5em;
+  font-size: 4em;
+  text-transform: uppercase;
+}
+
+h3 {
+  text-align: center;
+  color: #16160a;
+  font-size: 1.47em;
+  margin-bottom: 1.5em;
+}
+
+i{
+  font-size: 0.9em;
+}
+
+span {
+  color: #515122;
+}
+
+span:hover {
+  color: #fcd656;
+}
+
+// 1920×1080   (22.18%)
+// 1366×768      (14.04%)
+// 1440×900      (6.41%)
+// 1280×720       (5.45%)
+// 1280×1024    (4.52%)
+/* xl */
+@media (max-width: 1920px) {
+  h1 {
+    margin-bottom: 0.5em;
+    font-size: 4.5em;
   }
   
+  h3 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+}
+
+/* lg */
+@media (max-width: 1366px) {
+  h1 {
+    margin-bottom: 0.5em;
+    font-size: 3.1em;
+  }
+  
+  h3 {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+  }
+}
+
+/* md */
+@media (max-width: 768px) {
+  h3 {
+    font-size: 3em;
+  }
+}
+
+/* sm */
+@media (max-width: 640px) {
+  h3 {
+    font-size: 3em;
+  }
+}
+
+/* xs */
+@media (max-width: 475px) {
+  h3 {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 1809px) {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 24.12px;
+  }
+}
+
+@media (max-width: 1467px) {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 19.56px;
+  }
+}
+
+@media (max-width: 1260px) {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 16.8px;
+  }
+}
+@media (max-width: 991px) {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 13.21px;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 10.22px;
+  }
+}
+@media (max-width: 468px) {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h3 {
+    font-size: 6.24px;
+  }
+}

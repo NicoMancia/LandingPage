@@ -9,7 +9,11 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { InterfaceLead, InterfaceItemForm } from '../Interfaces/figlio';
+import {
+  InterfaceLead,
+  InterfaceItemForm,
+  InterfaceSelect,
+} from '../Interfaces/figlio';
 import { LeadService } from '../Services/lead.service';
 import { ToastComponent } from '../toast/toast.component';
 
@@ -29,6 +33,69 @@ export class FormComponent implements OnInit {
   eventOutput: EventEmitter<any> = new EventEmitter<any>(); //creo un nuovo evento di tipo EventEmitter
 
   idInputToast: string = '';
+
+  options: InterfaceSelect[] = [
+    {
+      value: 'Abruzzo',
+    },
+    {
+      value: 'Basilicata',
+    },
+    {
+      value: 'Calabria',
+    },
+    {
+      value: 'Campania',
+    },
+    {
+      value: 'Emilia-Romagna',
+    },
+    {
+      value: 'Friuli-Venezia Giulia',
+    },
+    {
+      value: 'Lazio',
+    },
+    {
+      value: 'Liguria',
+    },
+    {
+      value: 'Lombardia',
+    },
+    {
+      value: 'Marche',
+    },
+    {
+      value: 'Molise',
+    },
+    {
+      value: 'Piemonte',
+    },
+    {
+      value: 'Puglia',
+    },
+    {
+      value: 'Sardegna',
+    },
+    {
+      value: 'Sicilia',
+    },
+    {
+      value: 'Toscana',
+    },
+    {
+      value: 'Trentino-Alto Adige',
+    },
+    {
+      value: 'Umbria',
+    },
+    {
+      value: "Valle d'Aosta",
+    },
+    {
+      value: 'Veneto',
+    },
+  ];
 
   items: InterfaceItemForm[] = [
     {
@@ -67,7 +134,6 @@ export class FormComponent implements OnInit {
   onCheckboxChange(event: Event) {
     const checkbox = event.target as HTMLInputElement; //
     const isChecked = checkbox.checked; //creo una variabile e gli asegno true se è selezionata o false se non è selezionata
-    // const select = document.getElementById('selectRegione');
 
     if (isChecked) {
       this.mySelect.nativeElement.style.display = 'block';
@@ -103,9 +169,5 @@ export class FormComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    console.log('ciao padre');
-    this.eventOutput.emit('Ciao padre!'); // eventOutput.emit -- il metodo emit crea la comunicazione per inviare un messaggio al padre
-    console.log(this.figlio);
-  }
+  ngOnInit(): void {}
 }
