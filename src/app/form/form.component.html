@@ -1,24 +1,23 @@
-<div class="container max-width">
+<div class="container">
   <div class="p-3 rounded layoutContainer">
     <form [formGroup]="checkoutForm" class="">
       @for (item of items; track $index) {
       <div class="form-floating mb-2">
         <input
-          style="width: 100%"
-          class="layoutInput layoutBorderInput form-control"
+          class="form-control"
           [placeholder]="item.placeholder"
           [formControlName]="item.name"
         />
         <label class="layout-label" for="floatingInput">{{ item.label }}</label>
       </div>
       }
-      <div class="form-check form-switch" style="margin-bottom: 8px">
+      <div class="form-check form-switch mb-2">
         <input
           class="form-check-input"
           type="checkbox"
           role="switch"
           id="flexSwitchCheckDefault"
-          (change)="onCheckboxChange($event)"
+          (change)="onCheckboxChangeRegion($event)"
         />
         <label
           style="color: white"
@@ -27,30 +26,53 @@
           >Solo piste nella mia regione</label
         >
       </div>
-      <div style="margin-bottom: 8px">
-        <div class="col-md">
-          <div class="form-floating">
-            <select
-              #selectRegione
-              class="form-select form-select-sm"
-              style="display: none"
-              formControlName="regione"
-            >
+
+      <div class="mb-2">
+        <div class="form-floating">
+          <select
+            #selectRegione
+            class="form-select form-select-sm"
+            style="display: none"
+            formControlName="regione"
+          >
             @for (option of options; track $index) {
-              <option [value]="option.value">{{option.value}}</option>
+            <option [value]="option.value">{{ option.value }}</option>
             }
-            </select>
-            <label for="selectRegione" #labelRegione style="display: none"
-              >Seleziona una regione</label
-            >
-          </div>
+          </select>
+          <label for="selectRegione" #labelRegione style="display: none"
+            >Seleziona una regione</label
+          >
         </div>
       </div>
-
+      <div class="form-check">
+        <input
+          #checkTerms
+          class="form-check-input "
+          type="checkbox"
+          id="flexCheckIndeterminate"
+          (change)="onCheckboxChangeTerms($event)"          
+        />
+        <label
+          class="form-check-label mb-2"
+          for="flexCheckIndeterminate"
+          style="color: white;"
+        >
+          Accetto i <u>Termini di servizio</u>, le <u>Condizioni generali</u> e
+          <u>Condizioni</u> e <u>Informativa sulla privacy</u>.
+        </label>
+        <label
+        #labelCampoObb
+          for="flexCheckIndeterminate"
+          style="color: red; display: none;"
+          class="mb-2"
+        >
+         <strong>Campo obbligatorio</strong>
+        </label>
+      </div>
       <button
         class="layoutButton btn btn-primary"
         (click)="create()"
-        id="liveToastBtn"
+        #liveToastBtn
       >
         ISCRIVIMI!
       </button>

@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   Output,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -124,41 +125,66 @@ export class FormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private leadService: LeadService
+    private leadService: LeadService,
+    private renderer: Renderer2,
+    private elementRef: ElementRef
   ) {}
 
-  @ViewChild('selectRegione') mySelect!: ElementRef; //creo un elemento "mySelect" che corrisponde all'elemento nel documento HTML con l'ID "selectRegione"
+  @ViewChild('selectRegione') mySelectRegion!: ElementRef; //creo un elemento "mySelect" che corrisponde all'elemento nel documento HTML con l'ID "selectRegione"
 
-  @ViewChild('labelRegione') myLabel!: ElementRef;
+  @ViewChild('labelRegione') myLabelRegion!: ElementRef;
 
-  onCheckboxChange(event: Event) {
-    const checkbox = event.target as HTMLInputElement; //
+  @ViewChild('checkTerms') mySelectTerms!: ElementRef;
+
+  @ViewChild('labelCampoObb') myLabelObb!: ElementRef;
+
+  onCheckboxChangeRegion(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
     const isChecked = checkbox.checked; //creo una variabile e gli asegno true se è selezionata o false se non è selezionata
 
     if (isChecked) {
-      this.mySelect.nativeElement.style.display = 'block';
-      this.myLabel.nativeElement.style.display = 'block';
+      this.mySelectRegion.nativeElement.style.display = 'block';
+      this.myLabelRegion.nativeElement.style.display = 'block';
     } else {
       this.checkoutForm.value.regione = '';
-      this.mySelect.nativeElement.value = '';
-      this.mySelect.nativeElement.style.display = 'none';
-      this.myLabel.nativeElement.style.display = 'none';
+      this.mySelectRegion.nativeElement.value = '';
+      this.mySelectRegion.nativeElement.style.display = 'none';
+      this.myLabelRegion.nativeElement.style.display = 'none';
+    }
+  }
+
+  onCheckboxChangeTerms(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
+    const isChecked = checkbox.checked; //creo una variabile e gli asegno true se è selezionata o false se non è selezionata
+
+    if (isChecked) {
+      this.renderer.removeClass(this.mySelectTerms.nativeElement, 'red-border');
+      this.myLabelObb.nativeElement.style.display = 'none';
     }
   }
 
   create(): void {
-    this.leadService.create(this.checkoutForm.value).subscribe({
-      next: () => {
-        this.idInputToast = 'liveToastSuccess';
-        this.resetToast();
-        this.checkoutForm.reset();
-      },
-      error: () => {
-        this.idInputToast = 'liveToastDanger';
-        this.resetToast();
-        this.checkoutForm.reset();
-      },
-    });
+    if (this.mySelectTerms.nativeElement.checked) {
+      this.leadService.create(this.checkoutForm.value).subscribe({
+        next: () => {
+          this.idInputToast = 'liveToastSuccess';
+          this.resetToast();
+          this.checkoutForm.reset();
+          this.mySelectRegion.nativeElement.checked = false;
+        },
+        error: () => {
+          console.log(this.mySelectTerms.nativeElement.checked);
+          this.mySelectTerms.nativeElement.checked = false;
+          console.log(this.mySelectTerms.nativeElement.checked);
+          this.idInputToast = 'liveToastDanger';
+          this.resetToast();
+          this.checkoutForm.reset();
+        },
+      });
+    } else {
+      this.renderer.addClass(this.mySelectTerms.nativeElement, 'red-border');
+      this.myLabelObb.nativeElement.style.display = 'block';
+    }
   }
 
   resetToast() {

@@ -3,15 +3,13 @@ h3 {
   text-transform: initial;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  font-size: 1.45em;
+  font-size: 1.5em;
 }
 
 .container-logo{
-  background-color: rgb(220, 219, 222, 0.9);
+  background-color: rgb(220, 219, 222, 0.1);
   border-radius: 30px;
 }
-
-
 
 div {
   text-align: center;
@@ -22,41 +20,31 @@ img {
   margin-bottom: 20px;
 }
 
-@media (max-width: 1347px) {
+/* lg */
+@media (max-width: 1366px) {
   h3 {
-    font-size: 20px;
-  }
-}
-@media (max-width: 905px) {
-  h3 {
-    font-size: 20px;
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
   }
 }
 
-@media (max-width: 767px) {
+/* md */
+@media (max-width: 768px) {
+  // h3 {
+  //   font-size: 3em;
+  // }
+}
+
+/* sm */
+@media (max-width: 640px) {
   h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
+    // font-size: 3em;
   }
 }
 
-@media (max-width: 582px) {
+/* xs */
+@media (max-width: 475px) {
   h3 {
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 495px) {
-  h3 {
-    font-size: 11px;
-    margin-bottom: 10px;
-  }
-}
-
-@media (max-width: 392px) {
-  h3 {
-    font-size: 9px;
-    margin-bottom: 7px;
+    // font-size: 1em;
   }
 }

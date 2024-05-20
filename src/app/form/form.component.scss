@@ -3,13 +3,14 @@
   background-color: transparent;
 }
 .max-width {
-  max-width: 60%;
+  max-height: 20;
 }
 
 input {
   border: #16160a solid;
   background-color: white;
 }
+
 select {
   border: #16160a solid;
 }
@@ -21,10 +22,13 @@ select {
   max-width: 100%;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+u {
+  color: #515122;
+}
+
+u:hover{
+  color: #fcd656;
+  cursor: pointer;
 }
 
 .layoutButton {
@@ -47,32 +51,8 @@ select {
   background-color: #dcdbde;
 }
 
-@media (max-width: 1347px) {
-  .max-width {
-    max-width: 88%;
-    
-  height: 88%;
-  }
-}
-@media (max-width: 991px) {
-  .max-width {
-    max-width: 60%;
-    
-  height: 60%;
-  }
+
+.red-border{
+  border-color: red;
 }
 
-@media (max-width: 767px) {
-  .max-width {
-    max-width: 80%;
-    
-  height: 80%;
-  }
-}
-@media (max-width: 468px) {
-  .max-width {
-    max-width: 100%;
-    
-  height: 100%;
-  }
-}
