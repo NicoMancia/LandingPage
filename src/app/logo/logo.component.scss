@@ -1,14 +1,9 @@
 h3 {
-  color: #16160A;
+  color: #16160a;
   text-transform: initial;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   font-size: 1.5em;
-}
-
-.container-logo{
-  background-color: rgb(220, 219, 222, 0.1);
-  border-radius: 30px;
 }
 
 div {
@@ -20,31 +15,41 @@ img {
   margin-bottom: 20px;
 }
 
-/* lg */
-@media (max-width: 1366px) {
+@media (max-width: 1920px) {
+  img {
+    max-width: 90%;
+  }
   h3 {
-    font-size: 1.1em;
-    margin-bottom: 0.5em;
+    font-size: 1.8em;
+    margin-bottom: 1em;
+  }
+}
+
+/* lg MIO PC*/
+@media (max-width: 1680px) {
+  img {
+    max-width: 100%;
+  }
+  h3 {
+    font-size: 1.8em;
+    margin-bottom: 1em;
   }
 }
 
 /* md */
-@media (max-width: 768px) {
-  // h3 {
-  //   font-size: 3em;
-  // }
+@media (max-width: 1440px) {
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+  }
 }
 
 /* sm */
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   h3 {
-    // font-size: 3em;
+    font-size: 1em;
+    margin-bottom: 1em;
   }
 }
 
-/* xs */
-@media (max-width: 475px) {
-  h3 {
-    // font-size: 1em;
-  }
-}
+

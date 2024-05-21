@@ -21,15 +21,15 @@ h1 {
   line-height: calc(1em + 8px);
   text-align: center;
   color: #515122;
-  margin-bottom: 0.5em;
-  font-size: 3.2em;
+  margin-bottom: 0.2em;
+  font-size: 7em;
   text-transform: uppercase;
 }
 
 h3 {
   text-align: center;
   color: #16160a;
-  font-size: 1.3em;
+  font-size: 2.8em;
   margin-bottom: 1.5em;
 }
 
@@ -45,49 +45,66 @@ span:hover {
   color: #fcd656;
 }
 
-// 1920×1080   (22.18%)
-// 1366×768      (14.04%)
-// 1440×900      (6.41%)
-// 1280×720       (5.45%)
-// 1280×1024    (4.52%)
-/* xl */
 @media (max-width: 1920px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 4.5em;
+  }
+
   h3 {
-    // font-size: 2em;
-    // margin-bottom: 0.5em;
+    font-size: 1.6em;
+    margin-bottom: 1em;
   }
 }
 
-/* lg */
-@media (max-width: 1366px) {
+/* lg MIO PC*/
+@media (max-width: 1680px) {
   h1 {
     margin-bottom: 0.2em;
-    font-size: 2.8em;
+    font-size: 4em;
   }
 
   h3 {
-    font-size: 1.1em;
-    margin-bottom: 0.5em;
+    font-size: 1.4em;
+    margin-bottom: 1em;
   }
 }
 
 /* md */
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 3.7em;
+  }
+
   h3 {
-    font-size: 3em;
+    font-size: 1.4em;
+    margin-bottom: 1em;
   }
 }
 
 /* sm */
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 2.5em;
+  }
+
   h3 {
-    // font-size: 3em;
+    font-size: 1em;
+    margin-bottom: 1em;
   }
 }
 
 /* xs */
-@media (max-width: 475px) {
+@media (max-width: 375px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 1.5em;
+  }
+
   h3 {
-    // font-size: 1em;
+    font-size: 0.5em;
+    margin-bottom: 1em;
   }
 }
