@@ -1,24 +1,24 @@
-<div class="container max-width">
-  <div class="shadow-lg p-3 rounded layoutContainer">
+<div class="container">
+  <div class="p-3 rounded layoutContainer">
     <form [formGroup]="checkoutForm" class="">
       @for (item of items; track $index) {
       <div class="form-floating mb-2">
         <input
-          style="width: 100%"
-          class="layoutInput layoutBorderInput form-control"
+          type="text"
+          class="form-control"
           [placeholder]="item.placeholder"
           [formControlName]="item.name"
         />
         <label class="layout-label" for="floatingInput">{{ item.label }}</label>
       </div>
       }
-      <div class="form-check form-switch" style="margin-bottom: 8px">
+      <div class="form-check form-switch mb-2">
         <input
           class="form-check-input"
           type="checkbox"
           role="switch"
           id="flexSwitchCheckDefault"
-          (change)="onCheckboxChange($event)"
+          (change)="onCheckboxChangeRegion($event)"
         />
         <label
           style="color: white"
@@ -27,52 +27,58 @@
           >Solo piste nella mia regione</label
         >
       </div>
-      <div style="margin-bottom: 8px">
-        <div class="col-md">
-          <div class="form-floating">
-            <select
-              #selectRegione
-              class="form-select form-select-sm"
-              style="display: none"
-              formControlName="regione"
-            >
-              <option value="Abruzzo">Abruzzo</option>
-              <option value="Basilicata">Basilicata</option>
-              <option value="Calabria">Calabria</option>
-              <option value="Campania">Campania</option>
-              <option value="Emilia-Romagana">Emilia-Romagana</option>
-              <option value="Friuli-Venezia-Giulia">
-                Friuli-Venezia-Giulia
-              </option>
-              <option value="Lazio">Lazio</option>
-              <option value="Liguria">Liguria</option>
-              <option value="Lombardia">Lombardia</option>
-              <option value="Marche">Marche</option>
-              <option value="Molise">Molise</option>
-              <option value="Piemonte">Piemonte</option>
-              <option value="Puglia">Puglia</option>
-              <option value="Sardegna">Sardegna</option>
-              <option value="Sicilia">Sicilia</option>
-              <option value="Toscana">Toscana</option>
-              <option value="Trendino-Alto Adige">Trendino-Alto Adige</option>
-              <option value="Umbria">Umbria</option>
-              <option value="Valle d'Aosta">Valle d'Aosta</option>
-              <option value="Veneto">Veneto</option>
-            </select>
-            <label for="selectRegione" #labelRegione style="display: none"
-              >Seleziona una regione</label
-            >
-          </div>
+
+      <div class="mb-2">
+        <div class="form-floating">
+          <select
+            #selectRegione
+            class="form-select form-select-sm"
+            style="display: none"
+            formControlName="regione"
+          >
+            @for (option of options; track $index) {
+            <option [value]="option.value">{{ option.value }}</option>
+            }
+          </select>
+          <label for="selectRegione" #labelRegione style="display: none"
+            >Seleziona una regione</label
+          >
         </div>
       </div>
-
+      <div class="form-check">
+        <input
+          #checkTerms
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckIndeterminate"
+          (change)="onCheckboxChangeTerms($event)"
+        />
+        <label
+          class="form-check-label"
+          for="flexCheckIndeterminate"
+          style="color: white"
+        >
+          Accetto i <u>Termini di servizio</u>, le <u>Condizioni generali</u> e
+          <u>Condizioni</u> e <u>Informativa sulla privacy</u>.
+        </label>
+        <label
+          #labelCampoObb
+          for="flexCheckIndeterminate"
+          class="layout-label-obb"
+        >
+          <strong>Campo obbligatorio</strong>
+        </label>
+      </div>
       <button
-        class="layoutButton btn btn-primary"
+        class="layoutButton btn btn-primary mt-2"
         (click)="create()"
-        id="liveToastBtn"
+        type="button"
+        #liveToastBtn
+        [disabled]="!checkoutForm.valid"
       >
         ISCRIVIMI!
       </button>
+      <app-modal [idModal]="idModal"></app-modal>
       <app-toast [idToast]="idInputToast"></app-toast>
     </form>
   </div>

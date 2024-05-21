@@ -1,31 +1,18 @@
-<div class="container-fluid background">
-  <div class="row altezza-pagina">
-    <div class="row h-25">
-      <div class="col-sm-2 pt-3 ps-4 ">
-        <img src="/assets/images/logo-transparent-png.png" class="WidthLogo" />
+<section class="overflow-hidden padding" style="height: 100vh">
+    <img src="assets/images/Lamb_Nera_BGW.png" class="background" />
+    <img src="assets/images/Lamb_Nera_Ombra.png" class="lambo" />
+  <div class="container-flex" style="height: 100%">
+    <div class="row" style="height: 100%">
+      <div class="col-sm-12 col-md-12 col-lg-6 shadow-lg col-logo">
+        <app-logo></app-logo>
       </div>
-      <div class="col-sm-10"></div>
-    </div>
-
-    <div class="row h-50">
-      <div class="col-7">
+      <div class="col-sm-0 col-md-0 col-lg-1"></div>
+      <div
+        class="col-sm-12 col-md-12 col-lg-5 shadow-lg col-call-form"
+      >
         <app-call-to-action></app-call-to-action>
-      </div>
-      <div class="col-5 center"> 
-        <app-form [figlio]="figlio" (eventOutput)="risposta()"></app-form>
+        <app-form [figlio]="pippo" (eventOutput)="risposta()"></app-form>
       </div>
     </div>
-    <div class="row h-25">
-      <div class="col"></div>
-    </div>
-    
-    <!-- <div>
-      <img src="/assets/images/logo-transparent-png.png" class="WidthLogo" />
-    </div> -->
-  <div class="back-video">
-     <video autoplay muted loop class="w-100">
-      <source src="/assets/images/videoLanding.webm" type="video/webm">
-    </video>
   </div>
-</div>
-
+</section>

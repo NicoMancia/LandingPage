@@ -5,18 +5,24 @@ import {
   Input,
   OnInit,
   Output,
+  Renderer2,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { InterfaceLead, InterfaceItemForm } from '../Interfaces/figlio';
+import {
+  InterfaceLead,
+  InterfaceItemForm,
+  InterfaceSelect,
+} from '../Interfaces/figlio';
 import { LeadService } from '../Services/lead.service';
 import { ToastComponent } from '../toast/toast.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule, FloatLabelModule, ToastComponent],
+  imports: [ReactiveFormsModule, FloatLabelModule, ToastComponent, ModalComponent],
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
   providers: [LeadService],
@@ -29,6 +35,79 @@ export class FormComponent implements OnInit {
   eventOutput: EventEmitter<any> = new EventEmitter<any>(); //creo un nuovo evento di tipo EventEmitter
 
   idInputToast: string = '';
+
+  idModal: string = '';
+  
+  @ViewChild('selectRegione') mySelectRegion!: ElementRef; //creo un elemento "mySelect" che corrisponde all'elemento nel documento HTML con l'ID "selectRegione"
+
+  @ViewChild('labelRegione') myLabelRegion!: ElementRef;
+
+  @ViewChild('checkTerms') mySelectTerms!: ElementRef;
+
+  @ViewChild('labelCampoObb') myLabelObb!: ElementRef;
+
+  options: InterfaceSelect[] = [
+    {
+      value: 'Abruzzo',
+    },
+    {
+      value: 'Basilicata',
+    },
+    {
+      value: 'Calabria',
+    },
+    {
+      value: 'Campania',
+    },
+    {
+      value: 'Emilia-Romagna',
+    },
+    {
+      value: 'Friuli-Venezia Giulia',
+    },
+    {
+      value: 'Lazio',
+    },
+    {
+      value: 'Liguria',
+    },
+    {
+      value: 'Lombardia',
+    },
+    {
+      value: 'Marche',
+    },
+    {
+      value: 'Molise',
+    },
+    {
+      value: 'Piemonte',
+    },
+    {
+      value: 'Puglia',
+    },
+    {
+      value: 'Sardegna',
+    },
+    {
+      value: 'Sicilia',
+    },
+    {
+      value: 'Toscana',
+    },
+    {
+      value: 'Trentino-Alto Adige',
+    },
+    {
+      value: 'Umbria',
+    },
+    {
+      value: "Valle d'Aosta",
+    },
+    {
+      value: 'Veneto',
+    },
+  ];
 
   items: InterfaceItemForm[] = [
     {
@@ -49,50 +128,61 @@ export class FormComponent implements OnInit {
   ];
 
   checkoutForm: FormGroup = this.formBuilder.group({
-    nome: '',
-    cognome: '',
-    email: '',
+    nome: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    cognome: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    email:new FormControl(null, [Validators.required, Validators.email]),
     regione: '',
   });
 
   constructor(
     private formBuilder: FormBuilder,
-    private leadService: LeadService
+    private leadService: LeadService,
+    private renderer: Renderer2
   ) {}
 
-  @ViewChild('selectRegione') mySelect!: ElementRef; //creo un elemento "mySelect" che corrisponde all'elemento nel documento HTML con l'ID "selectRegione"
-
-  @ViewChild('labelRegione') myLabel!: ElementRef;
-
-  onCheckboxChange(event: Event) {
-    const checkbox = event.target as HTMLInputElement; //
+  onCheckboxChangeRegion(event: Event) {
+    const checkbox = event.target as HTMLInputElement;
     const isChecked = checkbox.checked; //creo una variabile e gli asegno true se è selezionata o false se non è selezionata
-    // const select = document.getElementById('selectRegione');
 
     if (isChecked) {
-      this.mySelect.nativeElement.style.display = 'block';
-      this.myLabel.nativeElement.style.display = 'block';
+      this.mySelectRegion.nativeElement.style.display = 'block';
+      this.myLabelRegion.nativeElement.style.display = 'block';
     } else {
       this.checkoutForm.value.regione = '';
-      this.mySelect.nativeElement.value = '';
-      this.mySelect.nativeElement.style.display = 'none';
-      this.myLabel.nativeElement.style.display = 'none';
+      this.mySelectRegion.nativeElement.value = '';
+      this.mySelectRegion.nativeElement.style.display = 'none';
+      this.myLabelRegion.nativeElement.style.display = 'none';
+    }
+  }
+
+  onCheckboxChangeTerms(event: Event) {
+    
+    if (this.mySelectTerms.nativeElement.checked) {
+      this.renderer.removeClass(this.mySelectTerms.nativeElement, 'red-border');
+      this.myLabelObb.nativeElement.style.display = 'none';
     }
   }
 
   create(): void {
-    this.leadService.create(this.checkoutForm.value).subscribe({
-      next: () => {
-        this.idInputToast = 'liveToastSuccess';
-        this.resetToast();
-        this.checkoutForm.reset();
-      },
-      error: () => {
-        this.idInputToast = 'liveToastDanger';
-        this.resetToast();
-        this.checkoutForm.reset();
-      },
-    });
+    if (this.mySelectTerms.nativeElement.checked) {
+      this.leadService.create(this.checkoutForm.value).subscribe({
+        next: () => {
+          this.idModal = 'exampleModal';
+          this.resetModal();
+          this.checkoutForm.reset();
+          this.mySelectTerms.nativeElement.checked = false;
+        },
+        error: () => {
+          this.mySelectTerms.nativeElement.checked = false;
+          this.idInputToast = 'liveToastDanger';
+          this.resetToast();
+          this.checkoutForm.reset();
+        },
+      });
+    } else {
+      this.renderer.addClass(this.mySelectTerms.nativeElement, 'red-border');
+      this.myLabelObb.nativeElement.style.display = 'block';
+    }
   }
 
   resetToast() {
@@ -103,9 +193,13 @@ export class FormComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    console.log('ciao padre');
-    this.eventOutput.emit('Ciao padre!'); // eventOutput.emit -- il metodo emit crea la comunicazione per inviare un messaggio al padre
-    console.log(this.figlio);
+  resetModal() {
+    if (this.idModal != '') {
+      setTimeout(() => {
+        this.idModal = '';
+      }, 0);
+    }
   }
+
+  ngOnInit(): void {}
 }

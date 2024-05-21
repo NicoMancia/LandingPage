@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LeadService } from '../Services/lead.service';
-import { InterfaceLead } from '../Interfaces/figlio';
+import { InterfaceLead, InterfaceSelect } from '../Interfaces/figlio';
 import {
   FormArray,
   FormBuilder,
@@ -21,6 +21,68 @@ import { ToastComponent } from '../toast/toast.component';
 })
 export class LeadComponent implements OnInit {
   isHover: boolean = false;
+  options: InterfaceSelect[] = [
+    {
+      value: 'Abruzzo',
+    },
+    {
+      value: 'Basilicata',
+    },
+    {
+      value: 'Calabria',
+    },
+    {
+      value: 'Campania',
+    },
+    {
+      value: 'Emilia-Romagna',
+    },
+    {
+      value: 'Friuli-Venezia Giulia',
+    },
+    {
+      value: 'Lazio',
+    },
+    {
+      value: 'Liguria',
+    },
+    {
+      value: 'Lombardia',
+    },
+    {
+      value: 'Marche',
+    },
+    {
+      value: 'Molise',
+    },
+    {
+      value: 'Piemonte',
+    },
+    {
+      value: 'Puglia',
+    },
+    {
+      value: 'Sardegna',
+    },
+    {
+      value: 'Sicilia',
+    },
+    {
+      value: 'Toscana',
+    },
+    {
+      value: 'Trentino-Alto Adige',
+    },
+    {
+      value: 'Umbria',
+    },
+    {
+      value: "Valle d'Aosta",
+    },
+    {
+      value: 'Veneto',
+    },
+  ];
 
   @HostListener('document: mouseover', ['$event'])
   onMouseOver(event: MouseEvent) {
@@ -91,7 +153,6 @@ export class LeadComponent implements OnInit {
 
   findOne(id: string): void {
     if (Number(id)) {
-      console.log('pippo');
       this.leadService.findOne(Number(id)).subscribe({
         next: (response: InterfaceLead) => {
           this.leads.clear();

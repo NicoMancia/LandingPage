@@ -3,32 +3,37 @@
   background-color: transparent;
 }
 .max-width {
-  max-width: 60%;
+  max-height: 20;
 }
 
 input {
   border: #16160a solid;
   background-color: white;
 }
+
 select {
   border: #16160a solid;
 }
 .layoutContainer {
-  background-color: transparent;
+  background-color: rgb(81, 81, 34, 0.4);
   border-radius: 20%;
   align-items: center;
   justify-content: center;
   max-width: 100%;
 }
 
-.center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+u {
+  color: #515122;
+}
+
+u:hover {
+  color: #fcd656;
+  cursor: pointer;
 }
 
 .layoutButton {
   width: 100%;
+  height: 100%;
   background-color: transparent;
   border-color: #16160a;
   color: #16160a;
@@ -36,34 +41,22 @@ select {
   font-weight: bold;
 }
 
+.layout-label-obb {
+  color: red;
+  display: none;
+  font-size: 0.9em;
+}
+
 .layoutButton:hover {
-  background-color: #16160a;
-  color: white;
-  border-color: white;
+  background-color: #fcd656;
+  color: #16160a;
+  border-color: #16160a;
 }
 
 .layoutButton:active {
-  background-color: #515122;
+  background-color: #dcdbde;
 }
 
-@media (max-width: 1347px) {
-  .max-width{
-    max-width: 80%;
-  }
-}
-@media (max-width: 905px) {
-  .max-width{
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 767px) {
-  .max-width{
-    max-width: 80%;
-  }
-}
-@media (max-width: 767px) {
-  .max-width{
-    max-width: 100%;
-  }
+.red-border {
+  border-color: red;
 }
