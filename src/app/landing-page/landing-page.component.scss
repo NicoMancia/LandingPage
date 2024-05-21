@@ -1,27 +1,71 @@
-.BackGround {
-    width: 100%;
-    height: 100vh;
-    background-image: url('/assets/images/bgferrari.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+.padding {
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-top: 90px;
+  padding-bottom: 70px;
 }
 
-.WidthLogo {
-    height: 100%;
-    max-height: 4em;
+.col-logo{
+
+  border-radius: 30px;
+  justify-content: center;
+  align-items: start;
+  height: fit-content;
+  background-color: rgb(220, 219, 222, 0.1);
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  min-height: 100vh;
+}
+
+.lambo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  min-height: 100vh;
+}
+
+.col-call-form {
+  margin-top: 1.5em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: start;
+  height: fit-content;
+  background-color: rgb(220, 219, 222, 0.1);
 }
 
 .center {
-    top: 50%;
-    height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn-esplora:hover {
-    background-color: darken($color: #fce903, $amount: 7);
-    border-color: darken($color: #fce903, $amount: 7); 
+@media (max-width: 1920px) {
+
 }
 
-.btn-esplora:active{
-    background-color: darken($color: #fce903, $amount: 15);
-    border-color: darken($color: #fce903, $amount: 15);  
+/* lg */
+@media (max-width: 1680px) {
+
 }
+
+/* md */
+@media (max-width: 1024px) {
+
+}
+

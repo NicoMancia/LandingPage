@@ -1,27 +1,18 @@
-<div class="container-fluid BackGround">
-  <div class="row h-100">
-    <div class="row h-25">
-      <div class="col-sm-2 pt-3 ps-4 ">
-        <img src="/assets/images/logo-transparent-png.png" class="WidthLogo" />
+<section class="overflow-hidden padding" style="height: 100vh">
+    <img src="assets/images/Lamb_Nera_BGW.png" class="background" />
+    <img src="assets/images/Lamb_Nera_Ombra.png" class="lambo" />
+  <div class="container-flex" style="height: 100%">
+    <div class="row" style="height: 100%">
+      <div class="col-sm-12 col-md-12 col-lg-6 shadow-lg col-logo">
+        <app-logo></app-logo>
       </div>
-      <div class="col-sm-10"></div>
-    </div>
-
-    <div class="row h-50">
-      <div class="col-4">
-         </div>
-         <div class="col-5">
-        </div>
-      <div class="col-3 "> 
-        <app-form [figlio]="figlio" (eventOutput)="risposta()"></app-form>
+      <div class="col-sm-0 col-md-0 col-lg-1"></div>
+      <div
+        class="col-sm-12 col-md-12 col-lg-5 shadow-lg col-call-form"
+      >
+        <app-call-to-action></app-call-to-action>
+        <app-form [figlio]="pippo" (eventOutput)="risposta()"></app-form>
       </div>
     </div>
-    <div class="row h-25">
-      <div class="col"></div>
-    </div>
-
   </div>
-</div>
-<div>
-    
-</div>
+</section>

@@ -1,0 +1,110 @@
+.layout-paragraph-text {
+  color: darken($color: #ffffff, $amount: 0);
+}
+
+u {
+  color: #16160a;
+  
+}
+
+img {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+u:hover {
+  color: #fcd656;
+}div {
+  text-align: center;
+}
+h1 {
+  line-height: calc(1em + 8px);
+  text-align: center;
+  color: #515122;
+  margin-bottom: 0.2em;
+  font-size: 7em;
+  text-transform: uppercase;
+}
+
+h3 {
+  text-align: center;
+  color: #16160a;
+  font-size: 2.8em;
+  margin-bottom: 1.5em;
+}
+
+i{
+  font-size: 0.9em;
+}
+
+span {
+  color: #515122;
+}
+
+span:hover {
+  color: #fcd656;
+}
+
+@media (max-width: 1920px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 4.5em;
+  }
+
+  h3 {
+    font-size: 1.6em;
+    margin-bottom: 1em;
+  }
+}
+
+/* lg MIO PC*/
+@media (max-width: 1680px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 4em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+  }
+}
+
+/* md */
+@media (max-width: 1440px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 3.7em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+    margin-bottom: 1em;
+  }
+}
+
+/* sm */
+@media (max-width: 1024px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 2.5em;
+  }
+
+  h3 {
+    font-size: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+/* xs */
+@media (max-width: 375px) {
+  h1 {
+    margin-bottom: 0.2em;
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 0.5em;
+    margin-bottom: 1em;
+  }
+}

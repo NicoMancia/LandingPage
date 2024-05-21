@@ -1,49 +1,85 @@
- 
- <div>
-  <label style="width: 300px" class="text-center">
-    <p class="fw-bold">Lascia i tuoi dati e ti ricontatteremo con le migliori offerte più vicine a te!!</p>
-  </label>
-</div>
- <div class="container layoutContainer h-100 d-flex align-items-center justify-content-center">
- <form [formGroup]="checkoutForm" class="">
-    
-    @for (item of items; track $index) {
+<div class="container">
+  <div class="p-3 rounded layoutContainer">
+    <form [formGroup]="checkoutForm" class="">
+      @for (item of items; track $index) {
       <div class="form-floating mb-2">
-        <input style="width: 300px" [type]="item.type" class="layoutInput layoutBorderInput form-control" id="floatingInput" [placeholder]="item.placeholder" [formControlName]="item.name">
-        <label class="layoutlabel" for="floatingInput">{{item.label}}</label>
+        <input
+          type="text"
+          class="form-control"
+          [placeholder]="item.placeholder"
+          [formControlName]="item.name"
+        />
+        <label class="layout-label" for="floatingInput">{{ item.label }}</label>
       </div>
-    }    
-    <button style="width: 300px" class="layoutButton btn btn-primary" (click)="sendForm()">INVIA</button>
-    <button style="width: 300px" class="layoutButton btn btn-primary" (click)="sendForm()">INVIA</button>
+      }
+      <div class="form-check form-switch mb-2">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault"
+          (change)="onCheckboxChangeRegion($event)"
+        />
+        <label
+          style="color: white"
+          class="form-check-label"
+          for="flexSwitchCheckDefault"
+          >Solo piste nella mia regione</label
+        >
+      </div>
 
-</form>
+      <div class="mb-2">
+        <div class="form-floating">
+          <select
+            #selectRegione
+            class="form-select form-select-sm"
+            style="display: none"
+            formControlName="regione"
+          >
+            @for (option of options; track $index) {
+            <option [value]="option.value">{{ option.value }}</option>
+            }
+          </select>
+          <label for="selectRegione" #labelRegione style="display: none"
+            >Seleziona una regione</label
+          >
+        </div>
+      </div>
+      <div class="form-check">
+        <input
+          #checkTerms
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckIndeterminate"
+          (change)="onCheckboxChangeTerms($event)"
+        />
+        <label
+          class="form-check-label"
+          for="flexCheckIndeterminate"
+          style="color: white"
+        >
+          Accetto i <u>Termini di servizio</u>, le <u>Condizioni generali</u> e
+          <u>Condizioni</u> e <u>Informativa sulla privacy</u>.
+        </label>
+        <label
+          #labelCampoObb
+          for="flexCheckIndeterminate"
+          class="layout-label-obb"
+        >
+          <strong>Campo obbligatorio</strong>
+        </label>
+      </div>
+      <button
+        class="layoutButton btn btn-primary mt-2"
+        (click)="create()"
+        type="button"
+        #liveToastBtn
+        [disabled]="!checkoutForm.valid"
+      >
+        ISCRIVIMI!
+      </button>
+      <app-modal [idModal]="idModal"></app-modal>
+      <app-toast [idToast]="idInputToast"></app-toast>
+    </form>
+  </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="floatingInput" placeholder="Full name" formControlName="nome">
-      <label for="floatingInput">Full name</label>
-    </div>
-    <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="floatingInput" placeholder="Email address" formControlName="email">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating mb-2">
-      <input type="email" class="form-control" id="floatingInput" placeholder="Phone number" formControlName="phone">
-      <label for="floatingInput">Phone number</label>
-    </div> -->

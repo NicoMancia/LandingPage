@@ -1,11 +1,16 @@
 import { Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LeadComponent } from './lead/lead.component';
 
 
 export const routes: Routes = [
     {//caso path "landing-page"
         path: 'landing-page', 
         component: LandingPageComponent //corrisponde alla classe in "landing-page.component.ts"
+    },
+    {//caso path "lead"
+        path: 'lead', 
+        component: LeadComponent //corrisponde alla classe in "lead.component.ts"
     },
     {//caso di path che non esiste
         path: '**', //'**' --> path errato / non corrispondente
